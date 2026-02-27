@@ -93,10 +93,12 @@ const App = () => {
 
     <div className="parent">
 
-      {jobOpenings.map(function(ele){
+      {jobOpenings.map(function(ele,idx){
       
-        return <Card company={ele.companyName} post={ele.post} date={ele.datePosted}
+        return <div key={idx}>
+          <Card company={ele.companyName} post={ele.post} date={ele.datePosted}
                 tag1={ele.tag1} tag2={ele.tag2} pay={ele.pay} location={ele.location} image={ele.brandLogo}/>
+        </div>
       
       })}
 
