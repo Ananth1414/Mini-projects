@@ -17,9 +17,9 @@ const App = () => {
 
   useEffect(function(){
     getData()
-  },[index])
+  }, [index])
 
-  let printUserData = <h3 className='text-gray-400 top-1/2 left-1/2 font-semibold absolute text-xs -translax-x-1/2 -translax-y-1/2'>Loading...</h3>
+  let printUserData = <h3 className='text-gray-400 top-1/2 left-1/2 font-semibold absolute text-xs -translate-x-1/2 -translate-y-1/2'>Loading...</h3>
   if(userData.length>0){
     printUserData = userData.map(function(elem,idx){
 
@@ -40,7 +40,7 @@ const App = () => {
         <button 
         style={{opacity: index==1 ?0.6:1}}
         onClick={()=>{
-          if(index > 0){
+          if(index > 1){
           setIndex(index-1);
           setUserData([])
           }
