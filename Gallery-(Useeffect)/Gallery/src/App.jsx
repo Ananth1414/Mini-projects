@@ -9,15 +9,16 @@ const App = () => {
 
   const [index, setIndex] = useState(1)
 
-  const getData= async ()=>{
-    const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=30`)
-      setUserData(response.data)
-  }
+  useEffect(() => {
+  const fetchData = async () => {
+    const response = await axios.get(
+      `https://picsum.photos/v2/list?page=${index}&limit=30`
+    );
+    setUserData(response.data);
+  };
 
-
-  useEffect(function(){
-    getData()
-  }, [index])
+  fetchData();
+}, [index]);
 
   let printUserData = <h3 className='text-gray-400 top-1/2 left-1/2 font-semibold absolute text-xs -translate-x-1/2 -translate-y-1/2'>Loading...</h3>
   if(userData.length>0){
@@ -42,7 +43,7 @@ const App = () => {
         onClick={()=>{
           if(index > 1){
           setIndex(index-1);
-          setUserData([])
+        
           }
         }}
         className='bg-gray-400 text-black rounded px-6 py-2 font-semibold  active:scale-95 duration-200 cursor-pointer '>{'<'} Prev</button>
@@ -52,7 +53,7 @@ const App = () => {
         <button 
         onClick={()=>{
           setIndex(index+1)
-          setUserData([])
+          
         }}
         className='bg-gray-400 text-black rounded px-6 py-2 font-semibold  active:scale-95 duration-150 cursor-pointer '>Next {'>'}</button>
       </div>
